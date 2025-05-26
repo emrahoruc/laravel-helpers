@@ -179,7 +179,7 @@ if (! function_exists('array_first')) {
      *
      * @return mixed
      */
-    function array_first(iterable $array, callable $callback = null, $default = null)
+    function array_first(iterable $array, ?callable $callback = null, $default = null)
     {
         if (is_null($callback)) {
             if (empty($array)) {
@@ -211,7 +211,7 @@ if (! function_exists('array_last')) {
      *
      * @return mixed
      */
-    function array_last(array $array, callable $callback = null, $default = null)
+    function array_last(array $array, ?callable $callback = null, $default = null)
     {
         if (is_null($callback)) {
             return empty($array) ? value($default) : end($array);
@@ -553,7 +553,7 @@ if (! function_exists('array_random')) {
      *
      * @throws \InvalidArgumentException
      */
-    function array_random(array $array, int $number = null, bool $preserveKeys)
+    function array_random(array $array, ?int $number = null, ?bool $preserveKeys = null)
     {
         $requested = is_null($number) ? 1 : $number;
 
@@ -643,7 +643,7 @@ if (! function_exists('array_shuffle')) {
      *
      * @return array
      */
-    function array_shuffle(array $array, int $seed = null): array
+    function array_shuffle(array $array, ?int $seed = null): array
     {
         if (is_null($seed)) {
             shuffle($array);

@@ -297,7 +297,7 @@ if (! function_exists('str_length')) {
      *
      * @return int
      */
-    function str_length(string $value, string $encoding = null): int
+    function str_length(string $value, ?string $encoding = null): int
     {
         if ($encoding) {
             return mb_strlen($value, $encoding);
@@ -680,8 +680,8 @@ if (! function_exists('str_pascal')) {
     function str_pascal(string $value): string
     {
         $words = preg_replace('/[\p{P}]/u', ' ', $value);
-    	
-    	return str_replace(' ', '', ucwords($words));
+
+        return str_replace(' ', '', ucwords($words));
     }
 }
 
@@ -718,7 +718,7 @@ if (! function_exists('str_uuid4')) {
 if (! function_exists('str_jwt')) {
     /**
      * Generate a JWT.
-     * 
+     *
      * @param  array  $payload
      *
      * @return string
@@ -726,7 +726,7 @@ if (! function_exists('str_jwt')) {
     function str_jwt(array $payload) {
         $patterns = ['+', '/', '='];
 
-		$replacements = ['-', '_', ''];
+                $replacements = ['-', '_', ''];
 
         $header = json_encode(['typ' => 'JWT', 'alg' => 'HS256']);
         $chain[] = str_replace($patterns, $replacements, base64_encode($header));
